@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Illustration Studio</title>
+  <style>
+    :root {
+      --black: #111110;
+      --gold: #d6b56d;
+      --ivory: #f7f1e5;
+      --muted: #b9b3a8;
+      --panel: #1c1c19;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--ivory);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 22px 7%;
+      border-bottom: 1px solid #393326;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: var(--gold);
+      letter-spacing: 3px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    nav a {
+      color: var(--ivory);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    main { max-width: 1100px; margin: auto; padding: 45px 7%; }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(38px, 7vw, 66px);
+      line-height: 1.1;
+      font-weight: normal;
+      margin: 16px 0;
+    }
+
+    h1 span { color: var(--gold); font-style: italic; }
+
+    .intro { color: var(--muted); max-width: 520px; }
+
+    .button {
+      background: var(--gold);
+      color: #17140e;
+      border: none;
+      padding: 13px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 3px;
+      margin: 12px 8px 10px 0;
+    }
+
+    .button.secondary {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .section-title {
+      margin-top: 55px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    h2 { font-family: Georgia, serif; font-weight: normal; font-size: 30px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid #393326;
+      background: var(--panel);
+      padding: 22px;
+      border-radius: 5px;
+    }
+
+    .number { color: var(--gold); font-size: 12px; letter-spacing: 2px; }
+    .card p { color: var(--muted); font-size: 14px; }
+
+    .progress-track {
+      height: 6px;
+      background: #393326;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #progressBar {
+      width: 0;
+      height: 100%;
+      background: var(--gold);
+      transition: width .3s;
+    }
+
+    .lesson-area {
+      background: #f7f1e5;
+      color: #17140e;
+      padding: 22px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .lesson-area p { color: #4b463d; }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 12px;
+      border: 1px solid #b6a783;
+      border-radius: 3px;
+      font: inherit;
+      background: #fffdf8;
+    }
+
+    footer {
+      padding: 25px 7%;
+      border-top: 1px solid #393326;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 500px) {
+      header { align-items: flex-start; }
+      nav { gap: 12px; }
+      main { padding-top: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">FIS. / STUDIO</div>
+    <nav>
+      <a href="#lessons">Lessons</a>
+      <a href="#practice">Practice</a>
+      <a href="#progress">Progress</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="eyebrow">Your creative education begins here</div>
+      <h1>Turn your ideas<br>into <span>silhouettes.</span></h1>
+      <p class="intro">
+        Learn fashion illustration from the beginning.
+        Build your skills, explore your creativity and develop
+        your own visual language — one lesson at a time.
+      </p>
+      <button class="button" onclick="document.querySelector('#lessons').scrollIntoView({behavior:'smooth'})">
+        Begin learning →
+      </button>
+      <button class="button secondary" onclick="document.querySelector('#practice').scrollIntoView({behavior:'smooth'})">
+        Enter practice
+      </button>
+    </section>
+
+    <section id="progress">
+      <div class="section-title">
+        <h2>Your progress</h2>
+        <span id="progressText">0 of 4 lessons completed</span>
+      </div>
+      <div class="progress-track"><div id="progressBar"></div></div>
+      <p class="intro">Every sketch is a step forward. Keep going.</p>
+    </section>
+
+    <section id="lessons">
+      <div class="section-title"><h2>The learning room</h2></div>
+      <div class="grid">
+        <article class="card">
+          <div class="number">LESSON 01</div>
+          <h3>Understanding the Figure</h3>
+          <p>Discover the fashion figure and the proportions used in illustration.</p>
+          <button class="button" onclick="openLesson(0)">Start lesson</button>
+        </article>
+        <article class="card">
+          <div class="number">LESSON 02</div>
+          <h3>Drawing the Pose</h3>
+          <p>Learn balance, movement and simple fashion poses.</p>
+          <button class="button" onclick="openLesson(1)">Start lesson</button>
+        </article>
+        <article class="card">
+          <div class="number">LESSON 03</div>
+          <h3>Designing Garments</h3>
+          <p>Turn simple shapes into tops, skirts, trousers and dresses.</p>
+          <button class="button" onclick="openLesson(2)">Start lesson</button>
+        </article>
+        <article class="card">
+          <div class="number">LESSON 04</div>
+          <h3>Lines, Texture & Detail</h3>
+          <p>Explore fabric folds, seams, texture and finishing details.</p>
+          <button class="button" onclick="openLesson(3)">Start lesson</button>
+        </article>
+      </div>
+
+      <div id="lessonPanel" class="lesson-area" hidden>
+        <h3 id="lessonTitle"></h3>
+        <p id="lessonText"></p>
+        <button class="button" onclick="completeLesson()">Mark lesson complete ✓</button>
+        <button class="button secondary" onclick="closeLesson()">Close lesson</button>
+      </div>
+    </section>
+
+    <section id="practice">
+      <div class="section-title"><h2>Your practice space</h2></div>
+      <p class="intro">Write down an idea for your next design, or describe what you practised today.</p>
+      <textarea id="practiceNotes" placeholder="Today, I want to sketch..."></textarea>
+      <p><button class="button" onclick="saveNotes()">Save practice notes</button></p>
+      <p id="saveMessage" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>FASHION ILLUSTRATION STUDIO · Learn. Sketch. Create.</footer>
+
+  <script>
+    const lessons = [
+      {
+        title: "Lesson 01 — Understanding the Figure",
+        text: "Start with a simple vertical line. Imagine the body divided into sections, using the head as a measuring unit. Fashion figures are often elongated for artistic effect. First practise simple ovals and lines before adding detail."
+      },
+      {
+        title: "Lesson 02 — Drawing the Pose",
+        text: "Draw a light line showing the direction of the body. Add a head oval, shoulders, hips and simple limb lines. Keep the marks light. Try a standing pose first, then change the angle of the hips and shoulders to create movement."
+      },
+      {
+        title: "Lesson 03 — Designing Garments",
+        text: "Begin with a simple garment silhouette. Draw the neckline, shoulders and outer edges, then add seams and details. Let the garment follow the body's pose. Try designing a top, a skirt and a pair of trousers."
+      },
+      {
+        title: "Lesson 04 — Lines, Texture & Detail",
+        text: "Use curved lines for soft fabric folds and firmer lines for seams and structured edges. Practise showing the difference between denim, silk and lace using line density, texture and simple shading."
+      }
+    ];
+
+    let currentLesson = -1;
+    let completed = JSON.parse(localStorage.getItem("fis-completed") || "[]");
+
+    function updateProgress() {
+      document.getElementById("progressBar").style.width =
+        (completed.length / lessons.length * 100) + "%";
+      document.getElementById("progressText").textContent =
+        completed.length + " of " + lessons.length + " lessons completed";
+      document.querySelectorAll(".card").forEach((card, index) => {
+        const button = card.querySelector("button");
+        button.textContent = completed.includes(index) ? "Completed ✓" : "Start lesson";
+      });
+    }
+
+    function openLesson(index) {
+      currentLesson = index;
+      document.getElementById("lessonTitle").textContent = lessons[index].title;
+      document.getElementById("lessonText").textContent = lessons[index].text;
+      document.getElementById("lessonPanel").hidden = false;
+      document.getElementById("lessonPanel").scrollIntoView({behavior: "smooth"});
+    }
+
+    function completeLesson() {
+      if (!completed.includes(currentLesson)) {
+        completed.push(currentLesson);
+        localStorage.setItem("fis-completed", JSON.stringify(completed));
+      }
+      updateProgress();
+      closeLesson();
+    }
+
+    function closeLesson() {
+      document.getElementById("lessonPanel").hidden = true;
+    }
+
+    function saveNotes() {
+      localStorage.setItem("fis-notes", document.getElementById("practiceNotes").value);
+      document.getElementById("saveMessage").textContent = "Your practice notes have been saved on this browser.";
+    }
+
+    document.getElementById("practiceNotes").value = localStorage.getItem("fis-notes") || "";
+    updateProgress();
+  </script>
+</body>
+</html>
